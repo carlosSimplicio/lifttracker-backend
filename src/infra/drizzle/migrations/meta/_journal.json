@@ -8,6 +8,27 @@
       "when": 1694044501628,
       "tag": "0000_strong_black_cat",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1694138954799,
+      "tag": "0001_panoramic_banshee",
+      "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "5",
+      "when": 1694141517491,
+      "tag": "0002_cute_gabe_jones",
+      "breakpoints": true
+    },
+    {
+      "idx": 3,
+      "version": "5",
+      "when": 1694141868469,
+      "tag": "0003_fluffy_living_lightning",
+      "breakpoints": true
     }
   ]
 }

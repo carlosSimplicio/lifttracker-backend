@@ -1,0 +1,659 @@
+{
+  "version": "5",
+  "dialect": "pg",
+  "id": "4d66f2f2-4184-4eb2-8c8d-f56b63be6270",
+  "prevId": "67211e03-5e46-4e5a-b768-b2c467b52817",
+  "tables": {
+    "exercise_record": {
+      "name": "exercise_record",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "training_template_id": {
+          "name": "training_template_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "training_record_id": {
+          "name": "training_record_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "exercise_template_id": {
+          "name": "exercise_template_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "week": {
+          "name": "week",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "finished": {
+          "name": "finished",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "exercise_id": {
+          "name": "exercise_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "exercise_record_training_template_id_training_template_id_fk": {
+          "name": "exercise_record_training_template_id_training_template_id_fk",
+          "tableFrom": "exercise_record",
+          "tableTo": "training_template",
+          "columnsFrom": [
+            "training_template_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "exercise_record_training_record_id_training_record_id_fk": {
+          "name": "exercise_record_training_record_id_training_record_id_fk",
+          "tableFrom": "exercise_record",
+          "tableTo": "training_record",
+          "columnsFrom": [
+            "training_record_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "exercise_record_exercise_template_id_exercise_template_id_fk": {
+          "name": "exercise_record_exercise_template_id_exercise_template_id_fk",
+          "tableFrom": "exercise_record",
+          "tableTo": "exercise_template",
+          "columnsFrom": [
+            "exercise_template_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "exercise_record_exercise_id_exercise_id_fk": {
+          "name": "exercise_record_exercise_id_exercise_id_fk",
+          "tableFrom": "exercise_record",
+          "tableTo": "exercise",
+          "columnsFrom": [
+            "exercise_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "exercise_template": {
+      "name": "exercise_template",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "training_template_id": {
+          "name": "training_template_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "max_reps": {
+          "name": "max_reps",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "min_reps": {
+          "name": "min_reps",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "set_count": {
+          "name": "set_count",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "exercise_id": {
+          "name": "exercise_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "annotations": {
+          "name": "annotations",
+          "type": "varchar(512)",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "exercise_template_training_template_id_training_template_id_fk": {
+          "name": "exercise_template_training_template_id_training_template_id_fk",
+          "tableFrom": "exercise_template",
+          "tableTo": "training_template",
+          "columnsFrom": [
+            "training_template_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "exercise_template_exercise_id_exercise_id_fk": {
+          "name": "exercise_template_exercise_id_exercise_id_fk",
+          "tableFrom": "exercise_template",
+          "tableTo": "exercise",
+          "columnsFrom": [
+            "exercise_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "exercise": {
+      "name": "exercise",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "muscle_group_id": {
+          "name": "muscle_group_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "exercise_muscle_group_id_muscleGroup_id_fk": {
+          "name": "exercise_muscle_group_id_muscleGroup_id_fk",
+          "tableFrom": "exercise",
+          "tableTo": "muscleGroup",
+          "columnsFrom": [
+            "muscle_group_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "macrocycle": {
+      "name": "macrocycle",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_date": {
+          "name": "start_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "end_date": {
+          "name": "end_date",
+          "type": "date",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "finished": {
+          "name": "finished",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "mesocycle": {
+      "name": "mesocycle",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "weeks": {
+          "name": "weeks",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "current_week": {
+          "name": "current_week",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 1
+        },
+        "finished": {
+          "name": "finished",
+          "type": "boolean",
+          "primaryKey": false,
+          "notNull": false,
+          "default": false
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "macrocycle_id": {
+          "name": "macrocycle_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "mesocycle_macrocycle_id_macrocycle_id_fk": {
+          "name": "mesocycle_macrocycle_id_macrocycle_id_fk",
+          "tableFrom": "mesocycle",
+          "tableTo": "macrocycle",
+          "columnsFrom": [
+            "macrocycle_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "muscleGroup": {
+      "name": "muscleGroup",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {},
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "set_record": {
+      "name": "set_record",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "training_template_id": {
+          "name": "training_template_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "training_record_id": {
+          "name": "training_record_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "exercise_template_id": {
+          "name": "exercise_template_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "exercise_record_id": {
+          "name": "exercise_record_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "exercise_id": {
+          "name": "exercise_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "week": {
+          "name": "week",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "repetitions": {
+          "name": "repetitions",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "weight": {
+          "name": "weight",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "reps_in_reserve": {
+          "name": "reps_in_reserve",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "order": {
+          "name": "order",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "set_record_training_template_id_training_template_id_fk": {
+          "name": "set_record_training_template_id_training_template_id_fk",
+          "tableFrom": "set_record",
+          "tableTo": "training_template",
+          "columnsFrom": [
+            "training_template_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "set_record_training_record_id_training_record_id_fk": {
+          "name": "set_record_training_record_id_training_record_id_fk",
+          "tableFrom": "set_record",
+          "tableTo": "training_record",
+          "columnsFrom": [
+            "training_record_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "set_record_exercise_template_id_exercise_template_id_fk": {
+          "name": "set_record_exercise_template_id_exercise_template_id_fk",
+          "tableFrom": "set_record",
+          "tableTo": "exercise_template",
+          "columnsFrom": [
+            "exercise_template_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "set_record_exercise_record_id_exercise_record_id_fk": {
+          "name": "set_record_exercise_record_id_exercise_record_id_fk",
+          "tableFrom": "set_record",
+          "tableTo": "exercise_record",
+          "columnsFrom": [
+            "exercise_record_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "set_record_exercise_id_exercise_id_fk": {
+          "name": "set_record_exercise_id_exercise_id_fk",
+          "tableFrom": "set_record",
+          "tableTo": "exercise",
+          "columnsFrom": [
+            "exercise_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "training_record": {
+      "name": "training_record",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "start_date": {
+          "name": "start_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        },
+        "end_date": {
+          "name": "end_date",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "week": {
+          "name": "week",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "finished": {
+          "name": "finished",
+          "type": "timestamp",
+          "primaryKey": false,
+          "notNull": false
+        },
+        "mesocycle_id": {
+          "name": "mesocycle_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "training_template_id": {
+          "name": "training_template_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "training_record_mesocycle_id_mesocycle_id_fk": {
+          "name": "training_record_mesocycle_id_mesocycle_id_fk",
+          "tableFrom": "training_record",
+          "tableTo": "mesocycle",
+          "columnsFrom": [
+            "mesocycle_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        },
+        "training_record_training_template_id_training_template_id_fk": {
+          "name": "training_record_training_template_id_training_template_id_fk",
+          "tableFrom": "training_record",
+          "tableTo": "training_template",
+          "columnsFrom": [
+            "training_template_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    },
+    "training_template": {
+      "name": "training_template",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "serial",
+          "primaryKey": true,
+          "notNull": true
+        },
+        "name": {
+          "name": "name",
+          "type": "varchar(256)",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "current_week": {
+          "name": "current_week",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": false,
+          "default": 1
+        },
+        "mesocycle_id": {
+          "name": "mesocycle_id",
+          "type": "integer",
+          "primaryKey": false,
+          "notNull": true
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "training_template_mesocycle_id_mesocycle_id_fk": {
+          "name": "training_template_mesocycle_id_mesocycle_id_fk",
+          "tableFrom": "training_template",
+          "tableTo": "mesocycle",
+          "columnsFrom": [
+            "mesocycle_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "no action",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {}
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "_meta": {
+    "schemas": {},
+    "tables": {},
+    "columns": {
+      "\"mesocycle\".\"macrocyle_id\"": "\"mesocycle\".\"macrocycle_id\""
+    }
+  }
+}

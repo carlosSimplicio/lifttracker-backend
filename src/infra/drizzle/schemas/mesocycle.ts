@@ -4,18 +4,19 @@ import {
   serial,
   integer,
   boolean,
-  date,
+  timestamp,
 } from "drizzle-orm/pg-core";
+import { macrocycle } from "./macrocycle";
 
-export const mesocycles = pgTable("mesocycle", {
+export const mesocycle = pgTable("mesocycle", {
   id: serial("id").primaryKey(),
   name: varchar("name", { length: 256 }).notNull(),
   weeks: integer("weeks").notNull(),
   currentWeek: integer("current_week").default(1),
   finished: boolean("finished").default(false),
-  createdAt: date("created_at", { mode: "date" }).notNull(),
-  updatedAt: date("updated_at", { mode: "date" }).defaultNow(),
+  createdAt: timestamp("created_at", { mode: "date" }).defaultNow(),
+  macrocycleId: integer("macrocycle_id").references(() => macrocycle.id),
 });
 
-export type Mesocycle = typeof mesocycles.$inferSelect;
-export type NewMesocycle = typeof mesocycles.$inferInsert;
+export type Mesocycle = typeof mesocycle.$inferSelect;
+export type NewMesocycle = typeof mesocycle.$inferInsert;
