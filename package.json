@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "ts-node ./src/index.ts",
     "generate": "drizzle-kit generate:pg --config=./src/infra/drizzle/drizzle.config.ts",
     "migrate": "drizzle-kit push:pg --config=./src/infra/drizzle/drizzle.config.ts"
   },
@@ -17,6 +18,7 @@
   },
   "devDependencies": {
     "@types/express": "^4.17.17",
-    "drizzle-kit": "^0.19.13"
+    "drizzle-kit": "^0.19.13",
+    "ts-node": "^10.9.1"
   }
 }
