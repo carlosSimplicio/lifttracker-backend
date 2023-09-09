@@ -6,6 +6,7 @@ export const macrocycle = pgTable("macrocycle", {
   startDate: date("start_date", { mode: "date" }).notNull(),
   endDate: date("end_date", { mode: "date" }).notNull(),
   finished: boolean("finished").default(false),
+  objective: varchar("objective", { length: 256 }).notNull(),
 });
 
 export type Macrocycle = typeof macrocycle.$inferSelect;

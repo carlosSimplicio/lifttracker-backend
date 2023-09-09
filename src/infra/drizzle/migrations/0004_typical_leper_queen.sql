@@ -1,0 +1,1 @@
+ALTER TABLE "macrocycle" ADD COLUMN "objective" varchar(256) NOT NULL;
